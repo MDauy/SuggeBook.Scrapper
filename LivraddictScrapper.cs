@@ -1,6 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Newtonsoft.Json;
-using SuggeBook.Api.ViewModels;
+using SuggeBook.ViewModels;
 using System;
 using System.Configuration;
 using System.Net.Http;
@@ -26,10 +26,9 @@ namespace SuggeBookScrapper
                 {
                     var missedAuthorViewModel = new MissedAuthorViewModel
                     {
-                        Name = name,
+                        Title = name,
                         Message = response.RequestMessage.ToString(),
-                        StatusCode = response.StatusCode.ToString(),
-                        TriedUrl = finalUrl
+                        Url = finalUrl
                     };
 
                     Console.WriteLine(await UrlCallerHelper.CallUri_StringResult(HttpMethod.Post, ApiUrls.REGISTER_MISSED_AUTHOR, JsonConvert.SerializeObject(missedAuthorViewModel)));
