@@ -76,6 +76,7 @@ namespace SuggeBookScrapper
                 handler.AllowAutoRedirect = true;
                 using (HttpClient httpClient = new HttpClient(handler))
                 {
+                    httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/72.0");
                     var builder = new UriBuilder (url);
                     if (queryString != null)
                         {
